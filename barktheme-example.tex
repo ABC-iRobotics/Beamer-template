@@ -2,8 +2,11 @@
 % Version: 0.1.1,  02/01/2016
 
 \documentclass{beamer}
+%\documentclass[handout]{beamer}
 \usetheme{bark}
 \usepackage[magyar]{babel} %after change 2 build is necessary - i do not know why...
+
+%\threeframeslayout %to create printable handouts
 
 %\usepackage{graphicx} %if there are used eps pictures
 %\usepackage{epstopdf} %if there are used eps pictures
@@ -150,6 +153,34 @@
 		(With positive arguments the space can be increased.)
 	\end{frame}
 	
+	\begin{frame}{Creating a handout}
+		By applying "handout" optional argument as
+		"$\backslash$documentclass[handout]{beamer}":
+		
+		the "$\backslash$pause" comments will not be taken into account
+		
+		\vspace{5mm}
+		
+		You can also create a printable form, where three frames are placed into one A4 page by using the command "$\backslash$threeframeslayout"
+		
+		
+		
+		\begin{wrapfigure}{r}{0.31\textwidth} % Its use is a littlebit problematic but not impossible...
+				\vspace{-8.1mm}
+				\fbox{\includegraphics[width=0.3\textwidth]{img/threeframeslayout_example}}
+				\vspace{9.1mm}
+		\end{wrapfigure} 
+	
+		\vspace{2mm}
+		(In this case, the\\ "thankyouforattentionframe" is omitted \\ to save paper.)
+	
+		\vspace{5mm}
+		
+		It is recommended to use it with  the \\ $ $ [handout] option, the result is depicted \\ on the right side
+	\end{frame}
+	
+	
+	
 	\begin{frame}	\showfootline
     \showlogo
     
@@ -205,6 +236,8 @@
 		Finally the next dia shows the result of the defined \texttt{\textbackslash thankyouforattentionframe\{The research was supported by...\}} command.
 		
 	\end{frame}
+
+	
 
 	\thankyouforattentionframe{\footnotesize The research was supported by GP's \& my free time. This very very very very long text is only to check the size of this textbox...\\ By the way, the theme is based on the Warsaw beamer theme of Till Tantau.\\ Best regards, J. Kuti  }
 	
