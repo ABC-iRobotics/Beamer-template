@@ -2,11 +2,13 @@
 % Version: 0.1.1,  02/01/2016
 
 \documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass[handout]{beamer} %to neglect the effect od \pause commands
 \usetheme{bark}
 \usepackage[magyar]{babel} %after change 2 build is necessary - i do not know why...
 
 %\threeframeslayout %to create printable handouts
+
+\usepackage{src/animate} % The modified animate package to work with the threeframeslayout option
 
 %\usepackage{graphicx} %if there are used eps pictures
 %\usepackage{epstopdf} %if there are used eps pictures
@@ -38,6 +40,18 @@
 				\vspace{3mm}
 				
 			\item Examples for figures/mathematical formulas
+			
+				\vspace{3mm}
+				
+			\item How to manipulate vertical spaces
+			
+				\vspace{3mm}
+			
+			\item How to create a printable/annotate handout from the presentation
+			
+				\vspace{3mm}
+			
+			\item Example for animations
 			
 				\vspace{3mm}
 				
@@ -179,7 +193,20 @@
 		It is recommended to use it with  the \\ $ $ [handout] option, the result is depicted \\ on the right side
 	\end{frame}
 	
+	\begin{frame}{Example for animation}
 	
+		The animate package provides opportunity to embed animation into the pdf presentation as
+		\animategraphics[controls,width=0.6\textwidth]{5}{img/UR5animation/UR5_pinv--}{1}{36}
+		
+		For more details, see its documentation: \href{http://mirrors.nxthost.com/ctan/macros/latex/contrib/animate/animate.pdf}{\small http://mirrors.nxthost.com/ctan/macros/latex/contrib/animate/animate.pdf}.
+	\end{frame}
+
+	\begin{frame}{Animation compatible with the threeframeslayout}
+		A modified animate package is included, that support the threeframeslayout option, if you declare where the animation must be placed: 'top','center' or 'bottom'
+		
+		The previous animation does not appear in the annotable output, but the next one will be placed appropriately:
+		\animategraphics[controls,center,width=0.4\textwidth]{5}{img/UR5animation/UR5_pinv--}{1}{36}
+	\end{frame}
 	
 	\begin{frame}	\showfootline
     \showlogo
