@@ -1,0 +1,275 @@
+% Copyright József Kuti, 2016 (GNU Public License)
+%
+% This Beamer Theme is created for members of Antal Bejczy Centre for Intelligent Robotics.
+% It is implemented based on Warsaw theme of Till Tantau.
+%
+% This file may be distributed and/or modified only
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+% Version: 1.01
+% Date: 21/03/2017
+
+% Updates:
+% 25/02/2017: Footline corrected (it isnt sensitive to ',' character, fontstyle corrected)
+% 21/03/2017: \showfootline is not sensitive to the actual fontsize
+% 27/04/2017: boundary sizes updated for the new BARK logo
+% 06/02/2018: New commands to set the fonttypes of
+%    - title on the titlepage
+%    - frametitle, framesubtitle, footline on normal frames
+ 
+% TODO:
+% jobb felsö logo - nem az igazi, de egyenlőre jó...
+
+\mode<presentation>
+
+\usefonttheme{structuresmallcapsserif} 
+\setbeamerfont{block title}{size=\small}
+% Requirement
+\RequirePackage{tikz}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{xstring}
+\usepackage{amsmath,amsthm,amssymb} % for mathematical formulas
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Settings
+\setbeamerfont{title}{size = \Large}
+\setbeamerfont{footline}{size*={7pt}{8pt}, series=\bfseries,  family={\fontfamily{phv}}, parent=structure}
+\setbeamerfont{frametitle}{family={\fontfamily{phv}}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\newcommand{\resetframetitlefonttype}[1]{
+	\setbeamerfont{frametitle}{family={\fontfamily{#1}}}
+	\setbeamerfont{footline}{family={\fontfamily{#1}}}
+}
+\newcommand{\resettitlefonttype}[1]{\setbeamerfont{title}{family={\fontfamily{#1}}}}
+
+\newcommand{\tprod}{\mathop{\boxtimes}\limits}
+\newcommand{\thankyouforattentionframe}[1]{
+	\begin{frame}
+		\begin{textblock*}{0.24\textwidth}(9.5cm,0.7cm)
+			\IfStrEq*{\languagename}{magyar}{\includegraphics[width=\textwidth]{src/OE-hu.pdf}}{\includegraphics[width=\textwidth]{src/OE-en.pdf}}
+		\end{textblock*}
+		\begin{textblock*}{0.24\textwidth}(9.5cm,4.7cm)
+			\IfStrEq*{\languagename}{magyar}{\includegraphics[width=\textwidth]{src/BARK-hu.pdf}}{\includegraphics[width=\textwidth]{src/BARK-en.pdf}}
+		\end{textblock*}
+		\begin{textblock*}{\textwidth}(1cm,3.7cm)
+			\huge \IfStrEq*{\languagename}{magyar}{Köszönöm a figyelmet!}{Thank you for attention!}
+		\end{textblock*}
+		\vspace{3cm}
+		\begin{textblock*}{0.75\textwidth}(1cm,6.2cm)
+			#1
+		\end{textblock*}
+		
+		\begin{textblock*}{0.5\textwidth}(9.6cm,9.4cm)
+			{\tiny\textcolor{szcsteelblue}{BARK theme\textcopyright OE-BARK-KJ}}
+		\end{textblock*}
+	\end{frame}	
+}
+\newcommand{\showfootline}{
+{ \normalsize 
+	\innerfoot{-3pt}
+}
+}
+
+\newcommand{\innerfoot}[1]{
+	\begin{textblock*}{364pt}(-5pt,\textheight)
+		\vspace{2.25mm}
+		\hbox{
+			\begin{beamercolorbox}[wd=0.4\textwidth,ht=7pt,dp=7pt,leftskip=.3cm plus1fill,rightskip=.3cm]{frametitle}%
+				\vspace{#1}
+				\usebeamerfont{footline}\insertshortauthor\vphantom{,|A}
+			\end{beamercolorbox}%
+			\begin{beamercolorbox}[wd=.52\textwidth,ht=7pt,dp=7pt,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+					\vspace{#1}
+				\usebeamerfont{footline}\insertshorttitle\vphantom{,|A}
+			\end{beamercolorbox}%
+			\begin{beamercolorbox}[wd=.085\paperwidth,ht=7pt,dp=7pt,leftskip=.0cm plus1fill,rightskip=.2cm ]{author in head/foot}%
+					\vspace{#1}
+				\usebeamerfont{footline}\insertframenumber/\inserttotalframenumber \vphantom{,|A}
+			\end{beamercolorbox}}%
+	\end{textblock*}
+	\vspace*{-#1}
+	}
+
+\newcommand{\showlogo}{
+	%	\begin{backgroundblock}{11.6cm}{0cm}
+	%		\includegraphics[width=0.10\textwidth]{src/BARK.pdf}
+	%	\end{backgroundblock}
+	\begin{textblock*}{0.08\textwidth}(11.99cm,0cm)
+		\includegraphics[width=\textwidth]{src/BARK.pdf}
+	\end{textblock*}
+}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Color Settings
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\definecolor{szcsteelblue}{rgb}{.175,.31,.505}
+\setbeamercolor{structure}{fg = szcsteelblue}
+
+\setbeamercolor*{title page header}{fg=szcsteelblue}
+\setbeamercolor*{author}{fg=szcsteelblue}
+\setbeamercolor*{date}{fg=szcsteelblue}
+\setbeamercolor*{item}{fg=szcsteelblue}
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor{section in head/foot}{parent=palette quaternary}
+\setbeamercolor{subsection in head/foot}{parent=palette primary}
+
+\setbeamercolor{author in head/foot}{parent=subsection in head/foot}
+\setbeamercolor{title in head/foot}{parent=section in head/foot}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Title page
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+%For background logo
+\newbox\@backgroundblock
+\newenvironment{backgroundblock}[2]{%
+	\global\setbox\@backgroundblock=\vbox\bgroup%
+	\unvbox\@backgroundblock%
+	\vbox to0pt\bgroup\vskip#2\hbox to0pt\bgroup\hskip#1\relax%
+}{\egroup\egroup\egroup}
+\addtobeamertemplate{background}{\box\@backgroundblock}{}
+
+\defbeamertemplate*{title page}{bark}[1][]
+{	
+	\vspace{-1cm}
+	\begin{center}
+		\line(1,0){325} \par		
+		\usebeamerfont{title}\inserttitle\par    		
+		\line(1,0){325}    	
+	\end{center}
+	
+	\begin{center}
+		\usebeamerfont{author}\insertauthor%	
+	\end{center}
+	\vspace{3cm}
+	
+	\begin{textblock*}{5cm}(4cm,8.1cm)
+		\begin{center}
+			\usebeamerfont{author}\insertdate%
+		\end{center}
+	\end{textblock*}
+	\begin{backgroundblock}{1cm}{5.7cm}
+		\IfStrEq*{\languagename}{magyar}{\includegraphics[width=0.24\textwidth]{src/OE-hu.pdf}}{\includegraphics[width=0.24\textwidth]{src/OE-en.pdf}}
+	\end{backgroundblock}
+	\begin{backgroundblock}{9.5cm}{5.7cm}
+		\IfStrEq*{\languagename}{magyar}{\includegraphics[width=0.24\textwidth]{src/BARK-hu.pdf}}{\includegraphics[width=0.22\textwidth]{src/BARK-en.pdf}}
+	\end{backgroundblock}
+%	\begin{textblock*}{0.24\textwidth}(1cm,5.7cm)
+%		\IfStrEq*{\languagename}{magyar}{\includegraphics[width=\textwidth]{src/OE-hu.pdf}}{\includegraphics[width=\textwidth]{src/OE-en.pdf}}
+%%	\end{textblock*}
+%	\begin{textblock*}{0.24\textwidth}(9.5cm,5.7cm)
+%		\IfStrEq*{\languagename}{magyar}{\includegraphics[width=1.25\textwidth]{src/BARK-hu.pdf}}{\includegraphics[width=\textwidth]{src/BARK-en.pdf}}
+%	\end{textblock*}
+}
+
+% Items
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{sections/subsections in toc}[square]
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Normal Frame
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% For footline space
+\setbeamertemplate{footline}{ \vspace{0.5cm} }
+
+% Head
+\ifbeamer@compress
+\defbeamertemplate*{headline}{split theme} { \leavevmode }
+\else
+\defbeamertemplate*{headline}{split theme}
+{%
+	\leavevmode%
+	\@tempdimb=2.4375ex%
+	\ifnum\beamer@subsectionmax<\beamer@sectionmax%
+	\multiply\@tempdimb by\beamer@sectionmax%
+	\else \multiply\@tempdimb by\beamer@subsectionmax	\fi%
+}
+\fi
+
+\pgfdeclarehorizontalshading[structure]{beamer@frametitleshade}{\paperheight}{%
+	color(0pt)=(structure.fg);
+	color(300pt)=(structure.fg);
+	color(317pt)=(structure.fg! 80 ! white);
+	color(335pt)=(white); %(frametitle right.bg)}
+	color(\paperwidth)=(white)} %(frametitle right.bg)}
+
+\defbeamertemplate*{frametitle}{bark}
+{%
+%Footline!
+{\normalsize
+	\innerfoot{-3pt} }
+
+	\showlogo
+	\nointerlineskip%
+	\vskip-3pt%
+	\hbox{\leavevmode
+		\advance\beamer@leftmargin by -12bp%
+		\advance\beamer@rightmargin by -12bp%
+		\beamer@tempdim=\textwidth%
+		\advance\beamer@tempdim by \beamer@leftmargin%
+		\advance\beamer@tempdim by \beamer@rightmargin%
+		\hskip-\Gm@lmargin\hbox{%
+			\setbox\beamer@tempbox=\hbox{
+				\begin{minipage}[b]{300pt}%
+					\vbox{}\vskip-.75ex%
+					\leftskip0.3cm%
+					\rightskip0.3cm plus1fil\leavevmode
+					\usebeamerfont*{frametitle}{\usebeamercolor[fg]{frametitle}\insertframetitle}%
+					\ifx\insertframesubtitle\@empty%
+					\strut\par%
+					\else
+					\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+					\fi%
+					\nointerlineskip
+					\vbox{}%
+				\end{minipage}}%
+			\beamer@tempdim=\ht\beamer@tempbox%
+			\advance\beamer@tempdim by 2pt%
+			\begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@tempdim}
+				\usebeamercolor{frametitle right}
+				\pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+				\pgfusepath{clip}
+				\pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+				\vspace{-5pt}
+			\end{pgfpicture}
+			\hskip-\paperwidth%
+			\box\beamer@tempbox%
+		}%
+		\hskip-\Gm@rmargin%
+		\vspace{-3pt}
+	}%
+
+}
+\mode<all>
