@@ -11,6 +11,17 @@ you should be able to compile the provided example file to get similar results (
 The example shows the special opportunities of the defined style, by modifing it you can create your on presentation.
 (The file beamerthemebark.sty, and folders img and src must be copied with the .tex source file that references them.)
 
+barktheme-example169.tex gives an example how to create a presentation with aspect ratio 16:9 (via 
+ beamerthemebark169.sty and commands
+
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[english]{babel}
+
+\usetheme{bark169}
+
+ )
+
 You can find more tutorials for LaTeX and Beamer using any search engine...
 
 Best regards,
